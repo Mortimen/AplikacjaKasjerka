@@ -1,0 +1,33 @@
+﻿<Window x:Class="StacjaBenzynowaMVVM.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StacjaBenzynowaMVVM.Views"
+        mc:Ignorable="d"
+        Title="ShellView" Height="450" Width="800" WindowState="Maximized">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Visibility="{Binding Path=MenuVisibility,Mode=OneWay}">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="Sprzedaż" x:Name="Sale"/>
+            <MenuItem Header="Dostawy"  Visibility="{Binding Path=DeliveriesVisibility,Mode=OneWay}">
+                <MenuItem Header="Dostawa" x:Name="Deliveries"/>
+                <MenuItem Header="Dodaj dostawce" x:Name="AddSupplier"/>
+            </MenuItem>
+            <MenuItem Header="Wyloguj" x:Name="Logout"/>
+            <MenuItem Header="Dodaj klienta" x:Name="AddClient"  Visibility="{Binding Path=AddClientVisibility,Mode=OneWay}"/>
+            <MenuItem Header="Dodaj pracownika" x:Name="AddEmployee"  Visibility="{Binding Path=AddEmployeeVisibility,Mode=OneWay}"/>
+            <MenuItem Header="Lista klientow" x:Name="ClientList"  Visibility="{Binding Path=AddClientVisibility,Mode=OneWay}"/>
+            <MenuItem Header="Lista pracownikow" x:Name="EmployeeList"  Visibility="{Binding Path=AddEmployeeVisibility,Mode=OneWay}"/>
+            <MenuItem Header="Lista zamowien" x:Name="SaleList"  Visibility="{Binding Path=AddEmployeeVisibility,Mode=OneWay}"/>
+            <MenuItem Header="Powiadomienia" x:Name="Notifications" HorizontalAlignment="Right" Foreground="{Binding Path=NotificationColor, Mode=OneWay}"></MenuItem>
+        </Menu>
+        <Grid>
+            <ContentControl x:Name="ActiveItem"/>
+        </Grid>
+    </DockPanel>
+</Window>
